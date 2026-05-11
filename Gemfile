@@ -8,6 +8,6 @@ gemspec
 gem "irb"
 gem "rake", "~> 13.0"
 
-gem "standard", "~> 1.3"
-gem 'rubocop', '>= 1.72.2'
-gem 'rspec'
+gem "standard", ">= 1.35.1"
+gem "rubocop", ">= 1.72.2"
+gem "rspec"

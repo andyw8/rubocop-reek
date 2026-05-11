@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'rubocop-reek'
-require 'rubocop/rspec/support'
+require "rubocop-reek"
+require "rubocop/rspec/support"
 
 RSpec.configure do |config|
   config.disable_monkey_patching!

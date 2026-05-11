@@ -24,7 +24,7 @@ module RuboCop
         def on_def(node)
           check_for_duplicates(node)
         end
-        alias on_defs on_def
+        alias_method :on_defs, :on_def
 
         private
 
