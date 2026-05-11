@@ -90,7 +90,7 @@ RSpec.describe RuboCop::Cop::Reek::DuplicateMethodCall, :config do
   end
 
   context "with AllowCalls configured" do
-    let(:cop_config) { { "AllowCalls" => ["baz"] } }
+    let(:cop_config) { {"AllowCalls" => ["baz"]} }
 
     it "does not register an offense for the allowed call" do
       expect_no_offenses(<<~RUBY)
@@ -103,7 +103,7 @@ RSpec.describe RuboCop::Cop::Reek::DuplicateMethodCall, :config do
   end
 
   context "with MaxCalls set to 2" do
-    let(:cop_config) { { "MaxCalls" => 2 } }
+    let(:cop_config) { {"MaxCalls" => 2} }
 
     it "does not register an offense when a call appears twice" do
       expect_no_offenses(<<~RUBY)
