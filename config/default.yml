@@ -1,1 +1,8 @@
 # Write it!
+
+Reek/DuplicateMethodCall:
+  Description: 'Checks for repeated identical method calls within a single method definition.'
+  Enabled: pending
+  MaxCalls: 1
+  AllowCalls: []
+  VersionAdded: '<<next>>'
