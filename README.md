@@ -31,7 +31,7 @@ Reek/SomeCopName:
 
 ## Cops
 
-| Reek detector | Cop | Status | RuboCop overlap |
+| Reek detector | Cop | Status | Possible RuboCop overlap |
 |---|---|---|---|
 | `Attribute` | `Reek/Attribute` | pending | `Style/AccessorGrouping` |
 | `BooleanParameter` | `Reek/BooleanParameter` | pending | |
