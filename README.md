@@ -33,35 +33,35 @@ Reek/SomeCopName:
 
 | Reek detector | Cop | Status | Possible RuboCop overlap |
 |---|---|---|---|
-| `Attribute` | `Reek/Attribute` | pending | `Style/AccessorGrouping` |
-| `BooleanParameter` | `Reek/BooleanParameter` | pending | |
-| `ClassVariable` | `Reek/ClassVariable` | pending | |
-| `ControlParameter` | `Reek/ControlParameter` | pending | |
-| `DataClump` | `Reek/DataClump` | pending | |
-| `DuplicateMethodCall` | [`Reek/DuplicateMethodCall`](lib/rubocop/cop/reek/duplicate_method_call.rb) | done | |
-| `FeatureEnvy` | `Reek/FeatureEnvy` | pending | |
-| `InstanceVariableAssumption` | `Reek/InstanceVariableAssumption` | pending | |
-| `IrresponsibleModule` | `Reek/IrresponsibleModule` | pending | `Style/Documentation` |
-| `LongParameterList` | `Reek/LongParameterList` | pending | `Metrics/ParameterLists` |
-| `LongYieldList` | `Reek/LongYieldList` | pending | |
-| `ManualDispatch` | `Reek/ManualDispatch` | pending | |
-| `MissingSafeMethod` | `Reek/MissingSafeMethod` | pending | |
-| `ModuleInitialize` | `Reek/ModuleInitialize` | pending | |
-| `NestedIterators` | `Reek/NestedIterators` | pending | `Metrics/BlockNesting` |
-| `NilCheck` | `Reek/NilCheck` | pending | `Style/NilComparison` |
-| `RepeatedConditional` | `Reek/RepeatedConditional` | pending | |
-| `SubclassedFromCoreClass` | `Reek/SubclassedFromCoreClass` | pending | `Lint/InheritException` (partial) |
-| `TooManyConstants` | `Reek/TooManyConstants` | pending | |
-| `TooManyInstanceVariables` | `Reek/TooManyInstanceVariables` | pending | |
-| `TooManyMethods` | `Reek/TooManyMethods` | pending | |
-| `TooManyStatements` | `Reek/TooManyStatements` | pending | `Metrics/MethodLength` |
-| `UncommunicativeMethodName` | `Reek/UncommunicativeMethodName` | pending | `Naming/MethodName` |
-| `UncommunicativeModuleName` | `Reek/UncommunicativeModuleName` | pending | `Naming/ClassAndModuleCamelCase` |
-| `UncommunicativeParameterName` | `Reek/UncommunicativeParameterName` | pending | `Naming/MethodParameterName` |
-| `UncommunicativeVariableName` | `Reek/UncommunicativeVariableName` | pending | `Naming/VariableName` |
-| `UnusedParameters` | `Reek/UnusedParameters` | pending | `Lint/UnusedMethodArgument` |
-| `UnusedPrivateMethod` | `Reek/UnusedPrivateMethod` | pending | |
-| `UtilityFunction` | `Reek/UtilityFunction` | pending | |
+| [`Attribute`](https://github.com/troessner/reek/blob/master/lib/reek/smells/attribute.rb) | `Reek/Attribute` | pending | `Style/AccessorGrouping` |
+| [`BooleanParameter`](https://github.com/troessner/reek/blob/master/lib/reek/smells/boolean_parameter.rb) | `Reek/BooleanParameter` | pending | |
+| [`ClassVariable`](https://github.com/troessner/reek/blob/master/lib/reek/smells/class_variable.rb) | `Reek/ClassVariable` | pending | |
+| [`ControlParameter`](https://github.com/troessner/reek/blob/master/lib/reek/smells/control_parameter.rb) | `Reek/ControlParameter` | pending | |
+| [`DataClump`](https://github.com/troessner/reek/blob/master/lib/reek/smells/data_clump.rb) | `Reek/DataClump` | pending | |
+| [`DuplicateMethodCall`](https://github.com/troessner/reek/blob/master/lib/reek/smells/duplicate_method_call.rb) | [`Reek/DuplicateMethodCall`](lib/rubocop/cop/reek/duplicate_method_call.rb) | done | |
+| [`FeatureEnvy`](https://github.com/troessner/reek/blob/master/lib/reek/smells/feature_envy.rb) | `Reek/FeatureEnvy` | pending | |
+| [`InstanceVariableAssumption`](https://github.com/troessner/reek/blob/master/lib/reek/smells/instance_variable_assumption.rb) | `Reek/InstanceVariableAssumption` | pending | |
+| [`IrresponsibleModule`](https://github.com/troessner/reek/blob/master/lib/reek/smells/irresponsible_module.rb) | `Reek/IrresponsibleModule` | pending | `Style/Documentation` |
+| [`LongParameterList`](https://github.com/troessner/reek/blob/master/lib/reek/smells/long_parameter_list.rb) | `Reek/LongParameterList` | pending | `Metrics/ParameterLists` |
+| [`LongYieldList`](https://github.com/troessner/reek/blob/master/lib/reek/smells/long_yield_list.rb) | `Reek/LongYieldList` | pending | |
+| [`ManualDispatch`](https://github.com/troessner/reek/blob/master/lib/reek/smells/manual_dispatch.rb) | `Reek/ManualDispatch` | pending | |
+| [`MissingSafeMethod`](https://github.com/troessner/reek/blob/master/lib/reek/smells/missing_safe_method.rb) | `Reek/MissingSafeMethod` | pending | |
+| [`ModuleInitialize`](https://github.com/troessner/reek/blob/master/lib/reek/smells/module_initialize.rb) | `Reek/ModuleInitialize` | pending | |
+| [`NestedIterators`](https://github.com/troessner/reek/blob/master/lib/reek/smells/nested_iterators.rb) | `Reek/NestedIterators` | pending | `Metrics/BlockNesting` |
+| [`NilCheck`](https://github.com/troessner/reek/blob/master/lib/reek/smells/nil_check.rb) | `Reek/NilCheck` | pending | `Style/NilComparison` |
+| [`RepeatedConditional`](https://github.com/troessner/reek/blob/master/lib/reek/smells/repeated_conditional.rb) | `Reek/RepeatedConditional` | pending | |
+| [`SubclassedFromCoreClass`](https://github.com/troessner/reek/blob/master/lib/reek/smells/subclassed_from_core_class.rb) | `Reek/SubclassedFromCoreClass` | pending | `Lint/InheritException` (partial) |
+| [`TooManyConstants`](https://github.com/troessner/reek/blob/master/lib/reek/smells/too_many_constants.rb) | `Reek/TooManyConstants` | pending | |
+| [`TooManyInstanceVariables`](https://github.com/troessner/reek/blob/master/lib/reek/smells/too_many_instance_variables.rb) | `Reek/TooManyInstanceVariables` | pending | |
+| [`TooManyMethods`](https://github.com/troessner/reek/blob/master/lib/reek/smells/too_many_methods.rb) | `Reek/TooManyMethods` | pending | |
+| [`TooManyStatements`](https://github.com/troessner/reek/blob/master/lib/reek/smells/too_many_statements.rb) | `Reek/TooManyStatements` | pending | `Metrics/MethodLength` |
+| [`UncommunicativeMethodName`](https://github.com/troessner/reek/blob/master/lib/reek/smells/uncommunicative_method_name.rb) | `Reek/UncommunicativeMethodName` | pending | `Naming/MethodName` |
+| [`UncommunicativeModuleName`](https://github.com/troessner/reek/blob/master/lib/reek/smells/uncommunicative_module_name.rb) | `Reek/UncommunicativeModuleName` | pending | `Naming/ClassAndModuleCamelCase` |
+| [`UncommunicativeParameterName`](https://github.com/troessner/reek/blob/master/lib/reek/smells/uncommunicative_parameter_name.rb) | `Reek/UncommunicativeParameterName` | pending | `Naming/MethodParameterName` |
+| [`UncommunicativeVariableName`](https://github.com/troessner/reek/blob/master/lib/reek/smells/uncommunicative_variable_name.rb) | `Reek/UncommunicativeVariableName` | pending | `Naming/VariableName` |
+| [`UnusedParameters`](https://github.com/troessner/reek/blob/master/lib/reek/smells/unused_parameters.rb) | `Reek/UnusedParameters` | pending | `Lint/UnusedMethodArgument` |
+| [`UnusedPrivateMethod`](https://github.com/troessner/reek/blob/master/lib/reek/smells/unused_private_method.rb) | `Reek/UnusedPrivateMethod` | pending | |
+| [`UtilityFunction`](https://github.com/troessner/reek/blob/master/lib/reek/smells/utility_function.rb) | `Reek/UtilityFunction` | pending | |
 
 ## Development
 
