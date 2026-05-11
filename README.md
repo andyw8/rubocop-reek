@@ -38,7 +38,7 @@ Reek/SomeCopName:
 | `ClassVariable` | `Reek/ClassVariable` | pending | |
 | `ControlParameter` | `Reek/ControlParameter` | pending | |
 | `DataClump` | `Reek/DataClump` | pending | |
-| `DuplicateMethodCall` | `Reek/DuplicateMethodCall` | done | |
+| `DuplicateMethodCall` | [`Reek/DuplicateMethodCall`](lib/rubocop/cop/reek/duplicate_method_call.rb) | done | |
 | `FeatureEnvy` | `Reek/FeatureEnvy` | pending | |
 | `InstanceVariableAssumption` | `Reek/InstanceVariableAssumption` | pending | |
 | `IrresponsibleModule` | `Reek/IrresponsibleModule` | pending | `Style/Documentation` |
