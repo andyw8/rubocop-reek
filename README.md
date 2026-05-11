@@ -31,37 +31,37 @@ Reek/SomeCopName:
 
 ## Cops
 
-| Reek detector | Cop | Status |
-|---|---|---|
-| `Attribute` | `Reek/Attribute` | pending |
-| `BooleanParameter` | `Reek/BooleanParameter` | pending |
-| `ClassVariable` | `Reek/ClassVariable` | pending |
-| `ControlParameter` | `Reek/ControlParameter` | pending |
-| `DataClump` | `Reek/DataClump` | pending |
-| `DuplicateMethodCall` | `Reek/DuplicateMethodCall` | pending |
-| `FeatureEnvy` | `Reek/FeatureEnvy` | pending |
-| `InstanceVariableAssumption` | `Reek/InstanceVariableAssumption` | pending |
-| `IrresponsibleModule` | `Reek/IrresponsibleModule` | pending |
-| `LongParameterList` | `Reek/LongParameterList` | pending |
-| `LongYieldList` | `Reek/LongYieldList` | pending |
-| `ManualDispatch` | `Reek/ManualDispatch` | pending |
-| `MissingSafeMethod` | `Reek/MissingSafeMethod` | pending |
-| `ModuleInitialize` | `Reek/ModuleInitialize` | pending |
-| `NestedIterators` | `Reek/NestedIterators` | pending |
-| `NilCheck` | `Reek/NilCheck` | pending |
-| `RepeatedConditional` | `Reek/RepeatedConditional` | pending |
-| `SubclassedFromCoreClass` | `Reek/SubclassedFromCoreClass` | pending |
-| `TooManyConstants` | `Reek/TooManyConstants` | pending |
-| `TooManyInstanceVariables` | `Reek/TooManyInstanceVariables` | pending |
-| `TooManyMethods` | `Reek/TooManyMethods` | pending |
-| `TooManyStatements` | `Reek/TooManyStatements` | pending |
-| `UncommunicativeMethodName` | `Reek/UncommunicativeMethodName` | pending |
-| `UncommunicativeModuleName` | `Reek/UncommunicativeModuleName` | pending |
-| `UncommunicativeParameterName` | `Reek/UncommunicativeParameterName` | pending |
-| `UncommunicativeVariableName` | `Reek/UncommunicativeVariableName` | pending |
-| `UnusedParameters` | `Reek/UnusedParameters` | pending |
-| `UnusedPrivateMethod` | `Reek/UnusedPrivateMethod` | pending |
-| `UtilityFunction` | `Reek/UtilityFunction` | pending |
+| Reek detector | Cop | Status | RuboCop overlap |
+|---|---|---|---|
+| `Attribute` | `Reek/Attribute` | pending | `Style/AccessorGrouping` |
+| `BooleanParameter` | `Reek/BooleanParameter` | pending | |
+| `ClassVariable` | `Reek/ClassVariable` | pending | |
+| `ControlParameter` | `Reek/ControlParameter` | pending | |
+| `DataClump` | `Reek/DataClump` | pending | |
+| `DuplicateMethodCall` | `Reek/DuplicateMethodCall` | pending | |
+| `FeatureEnvy` | `Reek/FeatureEnvy` | pending | |
+| `InstanceVariableAssumption` | `Reek/InstanceVariableAssumption` | pending | |
+| `IrresponsibleModule` | `Reek/IrresponsibleModule` | pending | `Style/Documentation` |
+| `LongParameterList` | `Reek/LongParameterList` | pending | `Metrics/ParameterLists` |
+| `LongYieldList` | `Reek/LongYieldList` | pending | |
+| `ManualDispatch` | `Reek/ManualDispatch` | pending | |
+| `MissingSafeMethod` | `Reek/MissingSafeMethod` | pending | |
+| `ModuleInitialize` | `Reek/ModuleInitialize` | pending | |
+| `NestedIterators` | `Reek/NestedIterators` | pending | `Metrics/BlockNesting` |
+| `NilCheck` | `Reek/NilCheck` | pending | `Style/NilComparison` |
+| `RepeatedConditional` | `Reek/RepeatedConditional` | pending | |
+| `SubclassedFromCoreClass` | `Reek/SubclassedFromCoreClass` | pending | `Lint/InheritException` (partial) |
+| `TooManyConstants` | `Reek/TooManyConstants` | pending | |
+| `TooManyInstanceVariables` | `Reek/TooManyInstanceVariables` | pending | |
+| `TooManyMethods` | `Reek/TooManyMethods` | pending | |
+| `TooManyStatements` | `Reek/TooManyStatements` | pending | `Metrics/MethodLength` |
+| `UncommunicativeMethodName` | `Reek/UncommunicativeMethodName` | pending | `Naming/MethodName` |
+| `UncommunicativeModuleName` | `Reek/UncommunicativeModuleName` | pending | `Naming/ClassAndModuleCamelCase` |
+| `UncommunicativeParameterName` | `Reek/UncommunicativeParameterName` | pending | `Naming/MethodParameterName` |
+| `UncommunicativeVariableName` | `Reek/UncommunicativeVariableName` | pending | `Naming/VariableName` |
+| `UnusedParameters` | `Reek/UnusedParameters` | pending | `Lint/UnusedMethodArgument` |
+| `UnusedPrivateMethod` | `Reek/UnusedPrivateMethod` | pending | |
+| `UtilityFunction` | `Reek/UtilityFunction` | pending | |
 
 ## Development
 
