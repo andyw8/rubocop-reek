@@ -1,15 +1,10 @@
 # frozen_string_literal: true
 
 require "bundler/gem_tasks"
-require "minitest/test_task"
-
-Minitest::TestTask.create
-
 require "standard/rake"
-
-task default: %i[test standard]
-
 require 'rspec/core/rake_task'
+
+task default: %i[spec standard]
 
 RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.pattern = FileList['spec/**/*_spec.rb']

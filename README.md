@@ -1,34 +1,95 @@
-# RuboCop::Reek
+# rubocop-reek
 
-TODO: Delete this and the text below, and describe your gem
+A RuboCop plugin that ports [Reek](https://github.com/troessner/reek)'s code smell detectors as RuboCop cops.
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rubocop/reek`. To experiment with that code, run `bin/console` for an interactive prompt.
+Reek has a number of long-standing limitations around configuration, file processing, and tooling integration. This gem addresses them by leveraging RuboCop's mature infrastructure — battle-tested configuration, todo generation, node pattern matching, and IDE/editor support — rather than maintaining duplicate tooling. See [troessner/reek#1512](https://github.com/troessner/reek/issues/1512) for the original discussion.
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+Add to your application's Gemfile:
 
-Install the gem and add to the application's Gemfile by executing:
-
-```bash
-bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG --require=false
+```ruby
+gem "rubocop-reek", require: false
 ```
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+Or install directly:
 
 ```bash
-gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+gem install rubocop-reek
 ```
+
+Because this gem registers itself as a RuboCop plugin via `lint_roller`, RuboCop will auto-load it when it is present in your bundle. No explicit `require` or `plugins:` entry in `.rubocop.yml` is needed.
 
 ## Usage
 
-TODO: Write usage instructions here
+Once installed, the `Reek/` department of cops is available. Cops can be configured in `.rubocop.yml` like any other RuboCop cop:
+
+```yaml
+Reek/SomeCopName:
+  Enabled: true
+```
+
+## Cops
+
+| Reek detector | Cop | Status |
+|---|---|---|
+| `Attribute` | `Reek/Attribute` | pending |
+| `BooleanParameter` | `Reek/BooleanParameter` | pending |
+| `ClassVariable` | `Reek/ClassVariable` | pending |
+| `ControlParameter` | `Reek/ControlParameter` | pending |
+| `DataClump` | `Reek/DataClump` | pending |
+| `DuplicateMethodCall` | `Reek/DuplicateMethodCall` | pending |
+| `FeatureEnvy` | `Reek/FeatureEnvy` | pending |
+| `InstanceVariableAssumption` | `Reek/InstanceVariableAssumption` | pending |
+| `IrresponsibleModule` | `Reek/IrresponsibleModule` | pending |
+| `LongParameterList` | `Reek/LongParameterList` | pending |
+| `LongYieldList` | `Reek/LongYieldList` | pending |
+| `ManualDispatch` | `Reek/ManualDispatch` | pending |
+| `MissingSafeMethod` | `Reek/MissingSafeMethod` | pending |
+| `ModuleInitialize` | `Reek/ModuleInitialize` | pending |
+| `NestedIterators` | `Reek/NestedIterators` | pending |
+| `NilCheck` | `Reek/NilCheck` | pending |
+| `RepeatedConditional` | `Reek/RepeatedConditional` | pending |
+| `SubclassedFromCoreClass` | `Reek/SubclassedFromCoreClass` | pending |
+| `TooManyConstants` | `Reek/TooManyConstants` | pending |
+| `TooManyInstanceVariables` | `Reek/TooManyInstanceVariables` | pending |
+| `TooManyMethods` | `Reek/TooManyMethods` | pending |
+| `TooManyStatements` | `Reek/TooManyStatements` | pending |
+| `UncommunicativeMethodName` | `Reek/UncommunicativeMethodName` | pending |
+| `UncommunicativeModuleName` | `Reek/UncommunicativeModuleName` | pending |
+| `UncommunicativeParameterName` | `Reek/UncommunicativeParameterName` | pending |
+| `UncommunicativeVariableName` | `Reek/UncommunicativeVariableName` | pending |
+| `UnusedParameters` | `Reek/UnusedParameters` | pending |
+| `UnusedPrivateMethod` | `Reek/UnusedPrivateMethod` | pending |
+| `UtilityFunction` | `Reek/UtilityFunction` | pending |
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Run the full test suite and linter:
+
+```bash
+bundle exec rake
+```
+
+Run only the tests:
+
+```bash
+bundle exec rake spec
+```
+
+Generate a new cop scaffold:
+
+```bash
+bundle exec rake new_cop[Reek/CopName]
+```
+
+This writes the cop source file, spec, registers it in `lib/rubocop/cop/reek_cops.rb`, and adds an entry to `config/default.yml`.
+
+You can also run `bin/console` for an interactive prompt to experiment with the gem.
+
+To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `lib/rubocop/reek/version.rb`, then run `bundle exec rake release`.
 
 ## Contributing
 
