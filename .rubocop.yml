@@ -1,0 +1,7 @@
+plugins:
+  - rubocop-internal_affairs
+  - rubocop-reek
+
+Naming/FileName:
+  Exclude:
+    - lib/rubocop-reek.rb
