@@ -46,17 +46,27 @@ module RuboCop
 
           calls = []
           node.each_descendant(:send) do |send_node|
-            calls << send_node if countable?(send_node)
+            calls << send_node if countable_send?(send_node)
+          end
+          node.each_descendant(:block) do |block_node|
+            calls << block_node if countable_block?(block_node)
           end
           calls
         end
 
-        def countable?(node)
+        def countable_send?(node)
           return false if node.method_name == :new
-          return false if allow_calls.include?(node.method_name.to_s)
+          return false if allow_calls.any? { |pattern| node.source.include?(pattern) }
           return false if node.parent&.send_type? && !node.parent.operator_method? && node.parent.receiver == node
+          # Bare calls with blocks are tracked as :block nodes instead
+          return false if node.parent&.block_type? && !node.receiver && node.arguments.none?
 
           node.receiver || node.arguments.any?
+        end
+
+        def countable_block?(node)
+          send_node = node.send_node
+          !send_node.receiver && send_node.arguments.none?
         end
 
         def call_key(node)
