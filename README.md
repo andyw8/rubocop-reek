@@ -79,7 +79,7 @@ Run only the tests:
 bundle exec rake spec
 ```
 
-Each cop has two spec files: a hand-written spec using RuboCop's `expect_offense` helpers, and a `_reek_spec.rb` that runs Reek's original spec for the corresponding smell detector against our cop. The Reek spec is fetched from GitHub on first run and cached in `tmp/reek_specs/` (gitignored). Delete that directory to force a refresh.
+In addition to hand-written specs, `spec/reek_specs.rb` runs Reek's original smell detector specs against all implemented cops. These are fetched from GitHub on first run and cached in `tmp/reek_specs/` (gitignored). Delete that directory to force a refresh.
 
 Generate a new cop scaffold:
 

@@ -55,12 +55,9 @@ rubocop-reek.rb
 
 RSpec (`spec/`) is the test framework for cop specs. `spec/spec_helper.rb` loads `rubocop/rspec/support`, which provides the `expect_offense`/`expect_no_offenses` helpers used in cop specs.
 
-Each cop has two spec files:
+Each cop has a hand-written spec in `spec/rubocop/cop/reek/<name>_spec.rb` using RuboCop's `expect_offense`/`expect_no_offenses` helpers.
 
-- `spec/rubocop/cop/reek/<name>_spec.rb` — hand-written specs using RuboCop's `expect_offense`/`expect_no_offenses` helpers.
-- `spec/rubocop/cop/reek/<name>_reek_spec.rb` — runs Reek's original spec for the corresponding smell detector against our cop. The spec file is fetched from GitHub on first run and cached in `tmp/reek_specs/` (gitignored). Delete that directory to force a refresh.
-
-The fetched spec is transformed by `spec/support/reek_spec_fetcher.rb` before caching: Reek-specific requires are stripped, the describe class is rewritten to point at our cop, Reek detector constants are replaced with our config key strings, and contexts covering block-node behaviour not replicated in our cop are skipped with `xcontext`.
+In addition, `spec/reek_specs.rb` runs Reek's original smell detector specs against all implemented cops via the `reek_of` compatibility matcher (`spec/support/reek_matcher.rb`). Spec files are fetched from GitHub on first run and cached in `tmp/reek_specs/` (gitignored). Delete that directory to force a refresh. The fetcher transforms the downloaded specs by stripping Reek-specific requires, rewriting the describe class to point at our cop, and replacing Reek detector constants with their RuboCop equivalents.
 
 ### Configuration
 
