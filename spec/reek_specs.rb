@@ -3,6 +3,10 @@
 require_relative "support/reek_matcher"
 require_relative "support/reek_spec_fetcher"
 
+RSpec.configure do |config|
+  config.include ReekMatcher
+end
+
 # Runs Reek's original smell detector specs against our cops via the
 # reek_of compatibility matcher. Spec files are fetched from GitHub on
 # first run and cached in tmp/reek_specs/ (gitignored).

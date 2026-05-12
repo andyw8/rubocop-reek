@@ -107,6 +107,8 @@ module ReekMatcher
   end
 end
 
-def reek_of(smell_type, attributes = {})
-  ReekMatcher::Matcher.new(smell_type, attributes)
+module ReekMatcher
+  def reek_of(smell_type, attributes = {})
+    Matcher.new(smell_type, attributes)
+  end
 end
