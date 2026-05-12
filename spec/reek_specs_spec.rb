@@ -12,7 +12,8 @@ end
 # first run and cached in tmp/reek_specs/ (gitignored).
 REEK_SPEC_NAMES = {
   "DuplicateMethodCall" => "duplicate_method_call",
-  "NilCheck" => "nil_check"
+  "NilCheck" => "nil_check",
+  "TooManyInstanceVariables" => "too_many_instance_variables"
 }.freeze
 
 REEK_SPEC_NAMES.each_value do |snake_name|

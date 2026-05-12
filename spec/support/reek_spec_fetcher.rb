@@ -36,6 +36,18 @@ module ReekSpecFetcher
     end
 
     result = result.gsub("described_class::MAX_ALLOWED_CALLS_KEY", '"MaxCalls"')
-    result.gsub("described_class::ALLOW_CALLS_KEY", '"AllowCalls"')
+    result = result.gsub("described_class::ALLOW_CALLS_KEY", '"AllowCalls"')
+    result = result.gsub("described_class::MAX_ALLOWED_IVARS_KEY", '"max_instance_variables"')
+
+    # Reek inline config comments (# :reek:CopName { ... }) have no RuboCop equivalent.
+    # Find `it` blocks containing one and mark them as `xit` (pending).
+    lines = result.lines
+    lines.each_with_index do |line, i|
+      next unless line.include?("# :reek:")
+      j = i - 1
+      j -= 1 while j >= 0 && !lines[j].match?(/^\s*it\s+/)
+      lines[j] = lines[j].sub(/\bit\b/, "xit") if j >= 0
+    end
+    lines.join
   end
 end

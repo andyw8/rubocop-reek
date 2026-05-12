@@ -44,10 +44,19 @@ module RuboCop
 
         def collect_ivars(node)
           names = []
-          node.each_descendant(:ivar, :ivasgn) do |ivar_node|
-            names << ivar_node.children.first
+          node.each_child_node do |child|
+            collect_ivars_from(child, names)
           end
           names.uniq
+        end
+
+        def collect_ivars_from(node, names)
+          return if node.class_type? || node.module_type?
+          # or_asgn covers memoization (@foo ||= ...) — Reek excludes these
+          return if node.or_asgn_type?
+
+          names << node.children.first if node.ivar_type? || node.ivasgn_type?
+          node.each_child_node { |child| collect_ivars_from(child, names) }
         end
       end
     end
