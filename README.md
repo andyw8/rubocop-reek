@@ -79,6 +79,8 @@ Run only the tests:
 bundle exec rake spec
 ```
 
+In addition to hand-written specs, `spec/reek_specs_spec.rb` runs Reek's original smell detector specs against all implemented cops. These are fetched from GitHub on first run and cached in `tmp/reek_specs/` (gitignored). Delete that directory to force a refresh.
+
 Generate a new cop scaffold:
 
 ```bash
