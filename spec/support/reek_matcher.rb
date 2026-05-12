@@ -18,7 +18,8 @@ module ReekMatcher
   }.freeze
 
   COP_MAP = {
-    "DuplicateMethodCall" => RuboCop::Cop::Reek::DuplicateMethodCall
+    "DuplicateMethodCall" => RuboCop::Cop::Reek::DuplicateMethodCall,
+    "NilCheck" => RuboCop::Cop::Reek::NilCheck
   }.freeze
 
   RUBY_VERSION_FLOAT = RUBY_VERSION.to_f

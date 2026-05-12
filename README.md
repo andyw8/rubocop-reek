@@ -48,7 +48,7 @@ Reek/SomeCopName:
 | [`MissingSafeMethod`](https://github.com/troessner/reek/blob/master/lib/reek/smell_detectors/missing_safe_method.rb) | `Reek/MissingSafeMethod` | pending | |
 | [`ModuleInitialize`](https://github.com/troessner/reek/blob/master/lib/reek/smell_detectors/module_initialize.rb) | `Reek/ModuleInitialize` | pending | |
 | [`NestedIterators`](https://github.com/troessner/reek/blob/master/lib/reek/smell_detectors/nested_iterators.rb) | `Reek/NestedIterators` | pending | `Metrics/BlockNesting` |
-| [`NilCheck`](https://github.com/troessner/reek/blob/master/lib/reek/smell_detectors/nil_check.rb) | `Reek/NilCheck` | pending | `Style/NilComparison` |
+| [`NilCheck`](https://github.com/troessner/reek/blob/master/lib/reek/smell_detectors/nil_check.rb) | [`Reek/NilCheck`](lib/rubocop/cop/reek/nil_check.rb) | done | `Style/NilComparison` |
 | [`RepeatedConditional`](https://github.com/troessner/reek/blob/master/lib/reek/smell_detectors/repeated_conditional.rb) | `Reek/RepeatedConditional` | pending | |
 | [`SubclassedFromCoreClass`](https://github.com/troessner/reek/blob/master/lib/reek/smell_detectors/subclassed_from_core_class.rb) | `Reek/SubclassedFromCoreClass` | pending | `Lint/InheritException` (partial) |
 | [`TooManyConstants`](https://github.com/troessner/reek/blob/master/lib/reek/smell_detectors/too_many_constants.rb) | `Reek/TooManyConstants` | pending | |

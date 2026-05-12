@@ -11,7 +11,8 @@ end
 # reek_of compatibility matcher. Spec files are fetched from GitHub on
 # first run and cached in tmp/reek_specs/ (gitignored).
 REEK_SPEC_NAMES = {
-  "DuplicateMethodCall" => "duplicate_method_call"
+  "DuplicateMethodCall" => "duplicate_method_call",
+  "NilCheck" => "nil_check"
 }.freeze
 
 REEK_SPEC_NAMES.each_value do |snake_name|

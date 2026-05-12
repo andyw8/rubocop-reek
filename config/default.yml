@@ -6,3 +6,8 @@ Reek/DuplicateMethodCall:
   MaxCalls: 1
   AllowCalls: []
   VersionAdded: '<<next>>'
+
+Reek/NilCheck:
+  Description: 'TODO: Write a description of the cop.'
+  Enabled: pending
+  VersionAdded: '<<next>>'
