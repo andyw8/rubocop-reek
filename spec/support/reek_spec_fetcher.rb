@@ -2,15 +2,16 @@
 
 require "open-uri"
 require "fileutils"
+require_relative "reek_matcher"
 
 module ReekSpecFetcher
   REEK_RAW_BASE = "https://raw.githubusercontent.com/troessner/reek/master"
   CACHE_DIR = File.expand_path("../../../tmp/reek_specs", __FILE__)
 
-  # Maps Reek smell detector class names to our RuboCop cop classes.
-  COP_CLASS_MAP = {
-    "Reek::SmellDetectors::DuplicateMethodCall" => "RuboCop::Cop::Reek::DuplicateMethodCall"
-  }.freeze
+  # Derived from ReekMatcher::COP_MAP — single source of truth for the cop mapping.
+  COP_CLASS_MAP = ReekMatcher::COP_MAP.transform_keys { |name|
+    "Reek::SmellDetectors::#{name}"
+  }.transform_values(&:name).freeze
 
   def self.fetch(smell_name)
     relative_path = "spec/reek/smell_detectors/#{smell_name}_spec.rb"
@@ -28,16 +29,12 @@ module ReekSpecFetcher
   end
 
   def self.transform(source)
-    # Remove Reek-specific requires (handled by our spec_helper)
-    result = source.gsub(/^require_relative.*\n/, "")
-    result = result.gsub(/^require_lib.*\n/, "")
+    result = source.gsub(/^require(?:_relative|_lib).*\n/, "")
 
-    # Rewrite describe block to point at our cop class
     COP_CLASS_MAP.each do |reek_class, cop_class|
       result = result.gsub(reek_class, cop_class)
     end
 
-    # Replace Reek detector constants with our cop config key strings
     result = result.gsub("described_class::MAX_ALLOWED_CALLS_KEY", '"MaxCalls"')
     result.gsub("described_class::ALLOW_CALLS_KEY", '"AllowCalls"')
   end

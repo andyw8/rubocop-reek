@@ -12,29 +12,28 @@
 # Unsupported Reek attributes (context:, source:) are silently ignored.
 
 module ReekMatcher
-  # Maps Reek detector config keys to RuboCop cop config keys.
   CONFIG_KEY_MAP = {
     "max_calls" => "MaxCalls",
     "allow_calls" => "AllowCalls"
   }.freeze
 
-  # Maps Reek smell type symbols to RuboCop cop classes.
   COP_MAP = {
     "DuplicateMethodCall" => RuboCop::Cop::Reek::DuplicateMethodCall
   }.freeze
 
+  RUBY_VERSION_FLOAT = RUBY_VERSION.to_f
+
   class Matcher
     include RSpec::Matchers::Composable
 
-    def initialize(smell_type, attributes)
+    def initialize(smell_type, attributes, extra_config = {})
       @smell_type = smell_type.to_s
       @attributes = attributes
-      @extra_config = {}
+      @extra_config = extra_config
     end
 
     def with_config(config_hash)
       mapped = config_hash.transform_keys { |k| CONFIG_KEY_MAP.fetch(k.to_s, k.to_s) }
-      # Regex values are not supported; convert to string for allow_calls
       mapped = mapped.transform_values do |v|
         if v.is_a?(Array)
           v.map { |item| item.is_a?(Regexp) ? item.source : item.to_s }
@@ -42,19 +41,17 @@ module ReekMatcher
           v
         end
       end
-      duped = dup
-      duped.instance_variable_set(:@extra_config, mapped)
-      duped
+      self.class.new(@smell_type, @attributes, mapped)
     end
 
     def matches?(source)
       @offenses = run_cop(source)
-      @matched = matching_offenses.any?
+      matching_offenses.any?
     end
 
     def does_not_match?(source)
       @offenses = run_cop(source)
-      @matched = matching_offenses.none?
+      matching_offenses.none?
     end
 
     def failure_message
@@ -73,13 +70,11 @@ module ReekMatcher
 
     def run_cop(source)
       cop_class = COP_MAP.fetch(@smell_type) { raise ArgumentError, "Unknown smell type: #{@smell_type}" }
-      cop_config_hash = {"Enabled" => true}.merge(@extra_config)
-      config = RuboCop::Config.new("Reek/#{@smell_type}" => cop_config_hash)
+      config = RuboCop::Config.new("Reek/#{@smell_type}" => {"Enabled" => true}.merge(@extra_config))
       cop = cop_class.new(config)
       commissioner = RuboCop::Cop::Commissioner.new([cop])
-      processed_source = RuboCop::ProcessedSource.new(source, RUBY_VERSION.to_f)
-      result = commissioner.investigate(processed_source)
-      result.offenses
+      processed_source = RuboCop::ProcessedSource.new(source, RUBY_VERSION_FLOAT)
+      commissioner.investigate(processed_source).offenses
     end
 
     def matching_offenses
