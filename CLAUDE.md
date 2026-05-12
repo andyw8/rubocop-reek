@@ -51,6 +51,8 @@ rubocop-reek.rb
 2. Implement the cop in `lib/rubocop/cop/reek/smell_name.rb` using RuboCop's AST node pattern matching.
 3. Write an RSpec test in `spec/rubocop/cop/reek/smell_name_spec.rb` using `RuboCop::RSpec::ExpectOffense` helpers (already available via `rubocop/rspec/support` in `spec/spec_helper.rb`).
 
+After implementing a cop, update the cops table in `README.md`: change the status from `pending` to `done` and add a link to the cop source file (following the pattern of existing done rows).
+
 **Scaffold gotchas:**
 - The generated spec contains a `let(:config)` stub and placeholder tests — replace the entire spec body rather than editing around the boilerplate.
 - The scaffold injects the `require_relative` in `reek_cops.rb` with single quotes, which fails Standard linting. Fix it to double quotes immediately.
