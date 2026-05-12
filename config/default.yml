@@ -11,3 +11,9 @@ Reek/NilCheck:
   Description: 'TODO: Write a description of the cop.'
   Enabled: pending
   VersionAdded: '<<next>>'
+
+Reek/TooManyInstanceVariables:
+  Description: 'Checks that a class has no more than a configurable number of instance variables.'
+  Enabled: pending
+  MaxInstanceVariables: 4
+  VersionAdded: '<<next>>'
