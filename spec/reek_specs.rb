@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative "support/reek_matcher"
 require_relative "support/reek_spec_fetcher"
 
 # Runs Reek's original smell detector specs against our cops via the
