@@ -7,7 +7,7 @@ require "rspec/core/rake_task"
 task default: %i[spec standard]
 
 RSpec::Core::RakeTask.new(:spec) do |spec|
-  spec.pattern = FileList["spec/**/*_spec.rb", "spec/reek_specs.rb"]
+  spec.pattern = FileList["spec/**/*_spec.rb"]
 end
 
 desc "Generate a new cop with a template"
