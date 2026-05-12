@@ -27,13 +27,6 @@ module ReekSpecFetcher
     dest
   end
 
-  # Context descriptions for tests that rely on Reek-specific behaviour not
-  # replicated in our cop (e.g. block node tracking). These are skipped.
-  SKIP_CONTEXTS = [
-    "with repeated simple method calls with blocks",
-    "with repeated method calls with receivers with blocks"
-  ].freeze
-
   def self.transform(source)
     # Remove Reek-specific requires (handled by our spec_helper)
     result = source.gsub(/^require_relative.*\n/, "")
@@ -42,11 +35,6 @@ module ReekSpecFetcher
     # Rewrite describe block to point at our cop class
     COP_CLASS_MAP.each do |reek_class, cop_class|
       result = result.gsub(reek_class, cop_class)
-    end
-
-    # Mark contexts that cover Reek-specific behaviour as skipped
-    SKIP_CONTEXTS.each do |ctx|
-      result = result.gsub("context '#{ctx}'", "xcontext '#{ctx}'")
     end
 
     # Replace Reek detector constants with our cop config key strings
