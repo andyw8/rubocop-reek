@@ -55,6 +55,13 @@ rubocop-reek.rb
 
 RSpec (`spec/`) is the test framework for cop specs. `spec/spec_helper.rb` loads `rubocop/rspec/support`, which provides the `expect_offense`/`expect_no_offenses` helpers used in cop specs.
 
+Each cop has two spec files:
+
+- `spec/rubocop/cop/reek/<name>_spec.rb` — hand-written specs using RuboCop's `expect_offense`/`expect_no_offenses` helpers.
+- `spec/rubocop/cop/reek/<name>_reek_spec.rb` — runs Reek's original spec for the corresponding smell detector against our cop. The spec file is fetched from GitHub on first run and cached in `tmp/reek_specs/` (gitignored). Delete that directory to force a refresh.
+
+The fetched spec is transformed by `spec/support/reek_spec_fetcher.rb` before caching: Reek-specific requires are stripped, the describe class is rewritten to point at our cop, Reek detector constants are replaced with our config key strings, and contexts covering block-node behaviour not replicated in our cop are skipped with `xcontext`.
+
 ### Configuration
 
 `config/default.yml` is the authoritative cop configuration file shipped with the gem. Each cop entry should include `Enabled: true` (or `false` for opt-in smells) and any tunable parameters.

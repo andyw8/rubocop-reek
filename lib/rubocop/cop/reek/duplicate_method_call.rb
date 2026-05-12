@@ -21,10 +21,6 @@ module RuboCop
       class DuplicateMethodCall < Base
         MSG = "`%<call>s` is called %<count>d times."
 
-        # Reek-compatible config key constants, used by ported Reek specs.
-        MAX_ALLOWED_CALLS_KEY = "MaxCalls"
-        ALLOW_CALLS_KEY = "AllowCalls"
-
         def on_def(node)
           check_for_duplicates(node)
         end

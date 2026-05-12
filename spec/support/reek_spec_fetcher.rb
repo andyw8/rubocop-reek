@@ -49,6 +49,8 @@ module ReekSpecFetcher
       result = result.gsub("context '#{ctx}'", "xcontext '#{ctx}'")
     end
 
-    result
+    # Replace Reek detector constants with our cop config key strings
+    result = result.gsub("described_class::MAX_ALLOWED_CALLS_KEY", '"MaxCalls"')
+    result.gsub("described_class::ALLOW_CALLS_KEY", '"AllowCalls"')
   end
 end
