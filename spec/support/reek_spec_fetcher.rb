@@ -39,8 +39,8 @@ module ReekSpecFetcher
     result = result.gsub("described_class::ALLOW_CALLS_KEY", '"AllowCalls"')
     result = result.gsub("described_class::MAX_ALLOWED_IVARS_KEY", '"max_instance_variables"')
 
-    # Tests that rely on Reek's inline disable syntax (# :reek:CopName) are
-    # testing Reek-specific suppression behaviour, not smell detection — skip them.
+    # Skip tests that verify Reek's inline disable feature (# :reek:CopName { ... }),
+    # which RuboCop handles via its own `# rubocop:disable` mechanism instead.
     lines = result.lines
     lines.each_with_index do |line, i|
       next unless line.include?("# :reek:")
