@@ -2,6 +2,7 @@
 
 require "rubocop-reek"
 require "rubocop/rspec/support"
+require_relative "support/reek_matcher"
 
 RSpec.configure do |config|
   config.disable_monkey_patching!
