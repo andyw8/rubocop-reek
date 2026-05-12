@@ -40,7 +40,6 @@ module ReekSpecFetcher
     result = result.gsub("described_class::MAX_ALLOWED_IVARS_KEY", '"max_instance_variables"')
 
     # Reek inline config comments (# :reek:CopName { ... }) have no RuboCop equivalent.
-    # Find `it` blocks containing one and mark them as `xit` (pending).
     lines = result.lines
     lines.each_with_index do |line, i|
       next unless line.include?("# :reek:")
