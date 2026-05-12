@@ -54,6 +54,7 @@ module RuboCop
         def countable?(node)
           return false if node.method_name == :new
           return false if allow_calls.include?(node.method_name.to_s)
+          return false if node.parent&.send_type? && !node.parent.operator_method? && node.parent.receiver == node
 
           node.receiver || node.arguments.any?
         end

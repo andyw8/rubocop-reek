@@ -75,6 +75,51 @@ RSpec.describe RuboCop::Cop::Reek::DuplicateMethodCall, :config do
     end
   end
 
+  context "when a method call with a receiver and arguments is duplicated" do
+    it "registers an offense" do
+      expect_offense(<<~RUBY)
+        def foo
+          @bar.baz(2, 3) + @bar.baz(2, 3)
+                           ^^^^^^^^^^^^^^ `@bar.baz(2, 3)` is called 2 times.
+        end
+      RUBY
+    end
+  end
+
+  context "when a chained method call is duplicated" do
+    it "registers an offense only on the outermost duplicated call" do
+      expect_offense(<<~RUBY)
+        def foo
+          @bar.baz.qux + @bar.baz.qux
+                         ^^^^^^^^^^^^ `@bar.baz.qux` is called 2 times.
+        end
+      RUBY
+    end
+  end
+
+  context "when a repeated attribute assignment is duplicated" do
+    it "registers an offense" do
+      expect_offense(<<~RUBY)
+        def foo(x)
+          @arr[x] = true
+          @arr[x] = true
+          ^^^^^^^^^^^^^^ `@arr[x] = true` is called 2 times.
+        end
+      RUBY
+    end
+  end
+
+  context "when a multi-assignment uses the same calls on the right-hand side" do
+    it "does not register an offense" do
+      expect_no_offenses(<<~RUBY)
+        def foo
+          a, b = delta, echo
+          b, a = delta, echo
+        end
+      RUBY
+    end
+  end
+
   context "when the same call appears in different methods" do
     it "does not register an offense" do
       expect_no_offenses(<<~RUBY)
