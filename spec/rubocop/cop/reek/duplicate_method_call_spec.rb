@@ -53,6 +53,53 @@ RSpec.describe RuboCop::Cop::Reek::DuplicateMethodCall, :config do
     end
   end
 
+  context "when a bare method call with an identical block is duplicated" do
+    it "registers an offense" do
+      expect_offense(<<~RUBY)
+        def foo
+          bar { baz }
+          bar { baz }
+          ^^^^^^^^^^^ `bar { baz }` is called 2 times.
+        end
+      RUBY
+    end
+  end
+
+  context "when a bare method call with different blocks is duplicated" do
+    it "does not register an offense" do
+      expect_no_offenses(<<~RUBY)
+        def foo
+          bar { baz }
+          bar { qux }
+        end
+      RUBY
+    end
+  end
+
+  context "when a method call with a receiver and identical block is duplicated" do
+    it "registers an offense on the send node" do
+      expect_offense(<<~RUBY)
+        def foo
+          bar.baz { qux }
+          bar.baz { qux }
+          ^^^^^^^ `bar.baz` is called 2 times.
+        end
+      RUBY
+    end
+  end
+
+  context "when a method call with a receiver and different blocks is duplicated" do
+    it "registers an offense on the send node" do
+      expect_offense(<<~RUBY)
+        def foo
+          bar.baz { qux }
+          bar.baz { quux }
+          ^^^^^^^ `bar.baz` is called 2 times.
+        end
+      RUBY
+    end
+  end
+
   context "when `.new` is called multiple times" do
     it "does not register an offense" do
       expect_no_offenses(<<~RUBY)
