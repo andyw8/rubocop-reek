@@ -58,3 +58,7 @@ RSpec (`spec/`) is the test framework for cop specs. `spec/spec_helper.rb` loads
 ### Configuration
 
 `config/default.yml` is the authoritative cop configuration file shipped with the gem. Each cop entry should include `Enabled: true` (or `false` for opt-in smells) and any tunable parameters.
+
+## Reference
+
+[RuboCop Development Guide](https://docs.rubocop.org/rubocop/latest/development.html) — covers cop implementation patterns, AST node matching, autocorrect, performance (`RESTRICT_ON_SEND`), documentation conventions, and testing.
