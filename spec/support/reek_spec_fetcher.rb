@@ -39,14 +39,16 @@ module ReekSpecFetcher
     result = result.gsub("described_class::ALLOW_CALLS_KEY", '"AllowCalls"')
     result = result.gsub("described_class::MAX_ALLOWED_IVARS_KEY", '"max_instance_variables"')
 
-    # Skip tests that verify Reek's inline disable feature (# :reek:CopName { ... }),
+    # Skip tests that verify Reek's inline config feature (# :reek:CopName { ... }),
     # which has no equivalent in RuboCop's cop infrastructure.
     lines = result.lines
     lines.each_with_index do |line, i|
       next unless line.include?("# :reek:")
       j = i - 1
       j -= 1 while j >= 0 && !lines[j].match?(/^\s*it\s+/)
-      lines[j] = lines[j].sub(/\bit\b/, "xit") if j >= 0
+      next unless j >= 0
+      indent = lines[j][/^\s*/] + "  "
+      lines.insert(j + 1, "#{indent}skip \"Reek inline config (# :reek:) has no RuboCop equivalent\"\n")
     end
     lines.join
   end
