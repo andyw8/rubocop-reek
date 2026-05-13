@@ -52,7 +52,7 @@ Reek/SomeCopName:
 | [`RepeatedConditional`](https://github.com/troessner/reek/blob/master/lib/reek/smell_detectors/repeated_conditional.rb) | `Reek/RepeatedConditional` | pending | |
 | [`SubclassedFromCoreClass`](https://github.com/troessner/reek/blob/master/lib/reek/smell_detectors/subclassed_from_core_class.rb) | `Reek/SubclassedFromCoreClass` | pending | `Lint/InheritException` (partial) |
 | [`TooManyConstants`](https://github.com/troessner/reek/blob/master/lib/reek/smell_detectors/too_many_constants.rb) | `Reek/TooManyConstants` | pending | |
-| [`TooManyInstanceVariables`](https://github.com/troessner/reek/blob/master/lib/reek/smell_detectors/too_many_instance_variables.rb) | `Reek/TooManyInstanceVariables` | pending | |
+| [`TooManyInstanceVariables`](https://github.com/troessner/reek/blob/master/lib/reek/smell_detectors/too_many_instance_variables.rb) | [`Reek/TooManyInstanceVariables`](lib/rubocop/cop/reek/too_many_instance_variables.rb) | done | |
 | [`TooManyMethods`](https://github.com/troessner/reek/blob/master/lib/reek/smell_detectors/too_many_methods.rb) | `Reek/TooManyMethods` | pending | |
 | [`TooManyStatements`](https://github.com/troessner/reek/blob/master/lib/reek/smell_detectors/too_many_statements.rb) | `Reek/TooManyStatements` | pending | `Metrics/MethodLength` |
 | [`UncommunicativeMethodName`](https://github.com/troessner/reek/blob/master/lib/reek/smell_detectors/uncommunicative_method_name.rb) | `Reek/UncommunicativeMethodName` | pending | `Naming/MethodName` |

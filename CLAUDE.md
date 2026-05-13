@@ -51,6 +51,16 @@ rubocop-reek.rb
 2. Implement the cop in `lib/rubocop/cop/reek/smell_name.rb` using RuboCop's AST node pattern matching.
 3. Write an RSpec test in `spec/rubocop/cop/reek/smell_name_spec.rb` using `RuboCop::RSpec::ExpectOffense` helpers (already available via `rubocop/rspec/support` in `spec/spec_helper.rb`).
 
+After implementing a cop:
+- Update the cops table in `README.md`: change the status from `pending` to `done` and add a link to the cop source file (following the pattern of existing done rows).
+- Add the cop to `REEK_SPEC_NAMES` in `spec/reek_specs_spec.rb`, to `COP_MAP` in `spec/support/reek_matcher.rb`, and add any Reek config key mappings to `CONFIG_KEY_MAP`. Also add any `described_class::CONSTANT` substitutions to the `transform` method in `spec/support/reek_spec_fetcher.rb`.
+
+**Scaffold gotchas:**
+- The generated spec contains a `let(:config)` stub and placeholder tests — replace the entire spec body rather than editing around the boilerplate.
+- The scaffold injects the `require_relative` in `reek_cops.rb` with single quotes, which fails Standard linting. Fix it to double quotes immediately.
+- Use `let(:cop_config) { {"ParameterName" => value} }` in specs to configure cop parameters; do not use `let(:config)`.
+- Reek is not in the bundle. For reference on Reek's defaults and behaviour, check the Reek source on GitHub or the cached specs in `tmp/reek_specs/`.
+
 ### Test setup
 
 RSpec (`spec/`) is the test framework for cop specs. `spec/spec_helper.rb` loads `rubocop/rspec/support`, which provides the `expect_offense`/`expect_no_offenses` helpers used in cop specs.

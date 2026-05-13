@@ -14,12 +14,14 @@
 module ReekMatcher
   CONFIG_KEY_MAP = {
     "max_calls" => "MaxCalls",
-    "allow_calls" => "AllowCalls"
+    "allow_calls" => "AllowCalls",
+    "max_instance_variables" => "MaxInstanceVariables"
   }.freeze
 
   COP_MAP = {
     "DuplicateMethodCall" => RuboCop::Cop::Reek::DuplicateMethodCall,
-    "NilCheck" => RuboCop::Cop::Reek::NilCheck
+    "NilCheck" => RuboCop::Cop::Reek::NilCheck,
+    "TooManyInstanceVariables" => RuboCop::Cop::Reek::TooManyInstanceVariables
   }.freeze
 
   RUBY_VERSION_FLOAT = RUBY_VERSION.to_f
@@ -93,6 +95,9 @@ module ReekMatcher
 
     def matches_count?(offense)
       return true unless @attributes.key?(:count)
+      # DuplicateMethodCall embeds "X times" in its message; other cops use
+      # different formats so we only check this for that smell.
+      return true unless @smell_type == "DuplicateMethodCall"
       offense.message.include?("#{@attributes[:count]} times")
     end
 
